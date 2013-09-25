@@ -303,6 +303,7 @@
 				6E97D37817F2B6C100E9F90C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
