@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E97D35C17F2B6C100E9F90C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E97D35B17F2B6C100E9F90C /* Cocoa.framework */; };
+		6E97D35E17F2B6C100E9F90C /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E97D35D17F2B6C100E9F90C /* AppleScriptObjC.framework */; };
+		6E97D36817F2B6C100E9F90C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E97D36617F2B6C100E9F90C /* InfoPlist.strings */; };
+		6E97D36A17F2B6C100E9F90C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E97D36917F2B6C100E9F90C /* main.m */; };
+		6E97D36E17F2B6C100E9F90C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6E97D36C17F2B6C100E9F90C /* Credits.rtf */; };
+		6E97D37017F2B6C100E9F90C /* AppDelegate.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6E97D36F17F2B6C100E9F90C /* AppDelegate.applescript */; };
+		6E97D37317F2B6C100E9F90C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E97D37117F2B6C100E9F90C /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6E97D35817F2B6C100E9F90C /* VPN Autoconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VPN Autoconnect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E97D35B17F2B6C100E9F90C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6E97D35D17F2B6C100E9F90C /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
+		6E97D36017F2B6C100E9F90C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6E97D36117F2B6C100E9F90C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6E97D36217F2B6C100E9F90C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6E97D36517F2B6C100E9F90C /* VPN Autoconnect-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VPN Autoconnect-Info.plist"; sourceTree = "<group>"; };
+		6E97D36717F2B6C100E9F90C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6E97D36917F2B6C100E9F90C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6E97D36B17F2B6C100E9F90C /* VPN Autoconnect-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VPN Autoconnect-Prefix.pch"; sourceTree = "<group>"; };
+		6E97D36D17F2B6C100E9F90C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		6E97D36F17F2B6C100E9F90C /* AppDelegate.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = AppDelegate.applescript; sourceTree = "<group>"; };
+		6E97D37217F2B6C100E9F90C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E97D35517F2B6C100E9F90C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E97D35C17F2B6C100E9F90C /* Cocoa.framework in Frameworks */,
+				6E97D35E17F2B6C100E9F90C /* AppleScriptObjC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E97D34F17F2B6C100E9F90C = {
+			isa = PBXGroup;
+			children = (
+				6E97D36317F2B6C100E9F90C /* VPN Autoconnect */,
+				6E97D35A17F2B6C100E9F90C /* Frameworks */,
+				6E97D35917F2B6C100E9F90C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E97D35917F2B6C100E9F90C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E97D35817F2B6C100E9F90C /* VPN Autoconnect.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E97D35A17F2B6C100E9F90C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E97D35B17F2B6C100E9F90C /* Cocoa.framework */,
+				6E97D35D17F2B6C100E9F90C /* AppleScriptObjC.framework */,
+				6E97D35F17F2B6C100E9F90C /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E97D35F17F2B6C100E9F90C /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E97D36017F2B6C100E9F90C /* AppKit.framework */,
+				6E97D36117F2B6C100E9F90C /* CoreData.framework */,
+				6E97D36217F2B6C100E9F90C /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6E97D36317F2B6C100E9F90C /* VPN Autoconnect */ = {
+			isa = PBXGroup;
+			children = (
+				6E97D36F17F2B6C100E9F90C /* AppDelegate.applescript */,
+				6E97D37117F2B6C100E9F90C /* MainMenu.xib */,
+				6E97D36417F2B6C100E9F90C /* Supporting Files */,
+			);
+			path = "VPN Autoconnect";
+			sourceTree = "<group>";
+		};
+		6E97D36417F2B6C100E9F90C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E97D36517F2B6C100E9F90C /* VPN Autoconnect-Info.plist */,
+				6E97D36617F2B6C100E9F90C /* InfoPlist.strings */,
+				6E97D36917F2B6C100E9F90C /* main.m */,
+				6E97D36B17F2B6C100E9F90C /* VPN Autoconnect-Prefix.pch */,
+				6E97D36C17F2B6C100E9F90C /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E97D35717F2B6C100E9F90C /* VPN Autoconnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E97D37617F2B6C100E9F90C /* Build configuration list for PBXNativeTarget "VPN Autoconnect" */;
+			buildPhases = (
+				6E97D35417F2B6C100E9F90C /* Sources */,
+				6E97D35517F2B6C100E9F90C /* Frameworks */,
+				6E97D35617F2B6C100E9F90C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VPN Autoconnect";
+			productName = "VPN Autoconnect";
+			productReference = 6E97D35817F2B6C100E9F90C /* VPN Autoconnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E97D35017F2B6C100E9F90C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Alexander Gorskih";
+			};
+			buildConfigurationList = 6E97D35317F2B6C100E9F90C /* Build configuration list for PBXProject "VPN Autoconnect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6E97D34F17F2B6C100E9F90C;
+			productRefGroup = 6E97D35917F2B6C100E9F90C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E97D35717F2B6C100E9F90C /* VPN Autoconnect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E97D35617F2B6C100E9F90C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E97D36817F2B6C100E9F90C /* InfoPlist.strings in Resources */,
+				6E97D36E17F2B6C100E9F90C /* Credits.rtf in Resources */,
+				6E97D37317F2B6C100E9F90C /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E97D35417F2B6C100E9F90C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E97D36A17F2B6C100E9F90C /* main.m in Sources */,
+				6E97D37017F2B6C100E9F90C /* AppDelegate.applescript in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6E97D36617F2B6C100E9F90C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E97D36717F2B6C100E9F90C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6E97D36C17F2B6C100E9F90C /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E97D36D17F2B6C100E9F90C /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		6E97D37117F2B6C100E9F90C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E97D37217F2B6C100E9F90C /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6E97D37417F2B6C100E9F90C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6E97D37517F2B6C100E9F90C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6E97D37717F2B6C100E9F90C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VPN Autoconnect/VPN Autoconnect-Prefix.pch";
+				INFOPLIST_FILE = "VPN Autoconnect/VPN Autoconnect-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6E97D37817F2B6C100E9F90C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VPN Autoconnect/VPN Autoconnect-Prefix.pch";
+				INFOPLIST_FILE = "VPN Autoconnect/VPN Autoconnect-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E97D35317F2B6C100E9F90C /* Build configuration list for PBXProject "VPN Autoconnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E97D37417F2B6C100E9F90C /* Debug */,
+				6E97D37517F2B6C100E9F90C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E97D37617F2B6C100E9F90C /* Build configuration list for PBXNativeTarget "VPN Autoconnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E97D37717F2B6C100E9F90C /* Debug */,
+				6E97D37817F2B6C100E9F90C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E97D35017F2B6C100E9F90C /* Project object */;
+}
