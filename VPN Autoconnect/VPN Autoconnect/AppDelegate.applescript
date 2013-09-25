@@ -7,20 +7,32 @@
 --  MIT-style copyright and disclaimer apply
 
 property NSStatusBar : class "NSStatusBar"
+property NSBundle : class "NSBundle"
+property VPNStatusViewController : class "VPNStatusViewController"
 
 script AppDelegate
 	property parent : class "NSObject"
-    property statusBar : missing value
+    property statusViewController : missing value
 	
 	on applicationWillFinishLaunching_(aNotification)
-        set statusBar to NSStatusBar's systemStatusBar()
+        createAutoconnectMenuController()
         addAutoconnectMenuToStatusBar()
 	end applicationWillFinishLaunching_
     
+    on createAutoconnectMenuController()
+        set statusViewController to VPNStatusViewController's new()
+        statusViewController's loadView()
+    end createAutoconnectMenuController
+    
     on addAutoconnectMenuToStatusBar()
+        set statusBar to NSStatusBar's systemStatusBar()
         set autoconnectMenu to statusBar's statusItemWithLength_(-1)
-        autoconnectMenu's setTitle_("VPN Autoconnect")
+        set bundle to NSBundle's mainBundle
+        set title to bundle's infoDictionary's CFBundleName
+        
+        autoconnectMenu's setTitle_(title)
         autoconnectMenu's setHighlightMode_(true)
+        autoconnectMenu's setMenu_(statusViewController's view)
     end addAutoconnectMenuToStatusBar
     
 	on applicationShouldTerminate_(sender)

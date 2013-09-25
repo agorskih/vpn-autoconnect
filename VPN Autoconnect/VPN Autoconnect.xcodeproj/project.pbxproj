@@ -14,6 +14,7 @@
 		6E97D36E17F2B6C100E9F90C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6E97D36C17F2B6C100E9F90C /* Credits.rtf */; };
 		6E97D37017F2B6C100E9F90C /* AppDelegate.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6E97D36F17F2B6C100E9F90C /* AppDelegate.applescript */; };
 		6E97D37317F2B6C100E9F90C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E97D37117F2B6C100E9F90C /* MainMenu.xib */; };
+		6E97D37E17F2C78600E9F90C /* VPNStatusViewController.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6E97D37D17F2C78600E9F90C /* VPNStatusViewController.applescript */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		6E97D36D17F2B6C100E9F90C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		6E97D36F17F2B6C100E9F90C /* AppDelegate.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = AppDelegate.applescript; sourceTree = "<group>"; };
 		6E97D37217F2B6C100E9F90C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6E97D37D17F2C78600E9F90C /* VPNStatusViewController.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = VPNStatusViewController.applescript; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				6E97D36F17F2B6C100E9F90C /* AppDelegate.applescript */,
 				6E97D37117F2B6C100E9F90C /* MainMenu.xib */,
+				6E97D37D17F2C78600E9F90C /* VPNStatusViewController.applescript */,
 				6E97D36417F2B6C100E9F90C /* Supporting Files */,
 			);
 			path = "VPN Autoconnect";
@@ -170,6 +173,7 @@
 			files = (
 				6E97D36A17F2B6C100E9F90C /* main.m in Sources */,
 				6E97D37017F2B6C100E9F90C /* AppDelegate.applescript in Sources */,
+				6E97D37E17F2C78600E9F90C /* VPNStatusViewController.applescript in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
