@@ -1,6 +1,6 @@
 --
 --  VPNStatusViewController.applescript
---  VPN Autoconnect
+--  VPN Autoconnect status view controller
 --
 --  Created by Alexander Gorskih on 25.09.13.
 --  Copyright (c) 2013 Alexander Gorskih. All rights reserved.
@@ -8,13 +8,16 @@
 
 property NSMenu : class "NSMenu"
 property NSMenuItem : class "NSMenuItem"
+property VPNConnection : class "VPNConnection"
 
 script VPNStatusViewController
 	property parent : class "NSObject"
 	property view : missing value
+    property model : missing value
     
     on loadView()
         set view to NSMenu's new()
+        set model to VPNConnection's new()
         addTurnOnItem()
         addTurnOffItem()
         addQuitItem()
