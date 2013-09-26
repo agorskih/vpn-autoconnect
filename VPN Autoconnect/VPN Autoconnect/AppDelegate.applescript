@@ -26,7 +26,7 @@ script AppDelegate
     
     on addAutoconnectMenuToStatusBar()
         set statusBar to NSStatusBar's systemStatusBar()
-        set autoconnectMenu to statusBar's statusItemWithLength_(-1)
+        set autoconnectMenu to statusBar's statusItemWithLength_(-1)'s retain
         set bundle to NSBundle's mainBundle
         set title to bundle's infoDictionary's CFBundleName
         
@@ -36,7 +36,6 @@ script AppDelegate
     end addAutoconnectMenuToStatusBar
     
 	on applicationShouldTerminate_(sender)
-		-- Insert code here to do any housekeeping before your application quits 
 		return current application's NSTerminateNow
 	end applicationShouldTerminate_
 	

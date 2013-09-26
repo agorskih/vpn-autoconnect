@@ -8,4 +8,12 @@
 
 script VPNConnection
 	property parent : class "NSObject"
+    
+    on availableVPNs()
+        tell application "System Events"
+            tell current location of network preferences
+                return name of every service whose (kind is 10) or (kind is 12) or (kind is 15)
+            end tell
+        end tell
+    end availableVPNs
 end script
