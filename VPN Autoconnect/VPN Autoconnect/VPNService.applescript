@@ -8,6 +8,11 @@
 
 script VPNConnection
 	property parent : class "NSObject"
+    property defaultConnection : "" -- Implement getter to check active VPN connection or use default
+    
+    to setDefaultConnection given service:VPNName
+        set defaultConnection to VPNName as string
+    end
     
     on availableVPNs()
         tell application "System Events"

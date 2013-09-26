@@ -32,36 +32,39 @@ script VPNStatusViewController
         my view's addItem_(turnOnItem)
         my view's addItem_(turnOffItem)
 
-        repeat with vpn in model's availableVPNs()
+        repeat with vpn in my model's availableVPNs()
             my view's addItem_(createServiceItem from vpn)
         end repeat
         
         my view's addItem_(quitItem)
     end
 
-    to createItem given title:aTitle, action:aHandler, visible:isVisible
-        set viewItem to NSMenuItem's new()
+    to createItem given title:aTitle, action:aHandler
+        set viewItem to the new of NSMenuItem
         viewItem's setTitle_(aTitle)
         viewItem's setTarget_(me)
-        viewItem's setHidden_(not isVisible)
         viewItem's setAction_(aHandler)
         return viewItem
     end
     
     to createServiceItem from vpn
-        return createItem given title:vpn, action:"setVPN:", visible:true
+        set serviceItem to createItem given title:vpn, action:"setVPN:"
+        if serviceItem's title as string equal my model's defaultConnection then
+            serviceItem's setState_(true)
+        end if
+        return serviceItem
     end
 
     to createTurnOnItem()
-        return createItem given title:"Turn On", action:"turnOn:", visible:true
+        return createItem given title:"Turn On", action:"turnOn:"
     end
 
     to createTurnOffItem()
-        return createItem given title:"Turn Off", action:"turnOff:", visible:false
+        return createItem given title:"Turn Off", action:"turnOff:"
     end
 
     to createQuitItem()
-        return createItem given title:"Quit", action:"quit:", visible:true
+        return createItem given title:"Quit", action:"quit:"
     end
 
     to turnOn_(sender)
@@ -75,10 +78,11 @@ script VPNStatusViewController
     end
 
     to setVPN_(sender)
+        model's setDefaultConnection given service:sender's title
     end
 
     to quit_(sender)
-        tell me to quit
+        tell current application to quit
     end
 
 end script
