@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E01565E17F6B00500B1615D /* NullVPNService.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 6E01565D17F6B00500B1615D /* NullVPNService.applescript */; };
 		6E97D35C17F2B6C100E9F90C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E97D35B17F2B6C100E9F90C /* Cocoa.framework */; };
 		6E97D35E17F2B6C100E9F90C /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E97D35D17F2B6C100E9F90C /* AppleScriptObjC.framework */; };
 		6E97D36817F2B6C100E9F90C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E97D36617F2B6C100E9F90C /* InfoPlist.strings */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E01565D17F6B00500B1615D /* NullVPNService.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = NullVPNService.applescript; sourceTree = "<group>"; };
 		6E97D35817F2B6C100E9F90C /* VPN Autoconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VPN Autoconnect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E97D35B17F2B6C100E9F90C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6E97D35D17F2B6C100E9F90C /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
@@ -93,6 +95,7 @@
 				6E97D37117F2B6C100E9F90C /* MainMenu.xib */,
 				6E97D37D17F2C78600E9F90C /* VPNStatusViewController.applescript */,
 				6E97D38117F2D03000E9F90C /* VPNService.applescript */,
+				6E01565D17F6B00500B1615D /* NullVPNService.applescript */,
 				6E97D36417F2B6C100E9F90C /* Supporting Files */,
 			);
 			path = "VPN Autoconnect";
@@ -178,6 +181,7 @@
 				6E97D37017F2B6C100E9F90C /* AppDelegate.applescript in Sources */,
 				6E97D37E17F2C78600E9F90C /* VPNStatusViewController.applescript in Sources */,
 				6E97D38217F2D03000E9F90C /* VPNService.applescript in Sources */,
+				6E01565E17F6B00500B1615D /* NullVPNService.applescript in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

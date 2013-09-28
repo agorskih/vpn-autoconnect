@@ -17,7 +17,7 @@ script VPNStatusViewController
     
     to loadView()
         set my view to the new of NSMenu
-        set my model to the new of VPNService
+        set my model to VPNService's createNullService()
         my view's setDelegate_(me)
     end
     
@@ -36,7 +36,7 @@ script VPNStatusViewController
 
     on newConnection from vpn
         set connection to the newItem given title:vpn, action:"connectionSelected:"
-        connection's setState_(vpn as string equals model's name)
+        connection's setState_(vpn as string equals (model's identifier as string))
         return connection
     end
 
@@ -61,11 +61,6 @@ script VPNStatusViewController
     end
 
     to switch_(sender)
-        if model's name equals "" then
-            display alert "No connection selected."
-            return
-        end if
-
         if model's autoconnected then
             model's disable()
         else
@@ -74,9 +69,10 @@ script VPNStatusViewController
     end
 
     on connectionSelected_(element)
-        my model's invalidate()
-        if element's state isn't true then
-            set model's name to element's title as string
+        model's disable()
+        set my model to VPNService's createNullService()
+        if element's state as boolean isn't true then
+            set model to VPNService's createService_(element's title)
         end if
     end
 
