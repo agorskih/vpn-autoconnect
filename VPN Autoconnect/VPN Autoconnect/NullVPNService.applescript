@@ -7,7 +7,7 @@
 --  MIT-style copyright and disclaimer apply
 
 script NullVPNService
-	property parent : class "NSObject"
+	property parent : class "VPNService"
     property identifier : ""
     property autoconnected : false
     
@@ -16,11 +16,11 @@ script NullVPNService
     end
 
     to disable()
-        --display alert "No connection selected."
+        -- do nothing
     end
 
     to invalidate()
-        --display alert "No connection selected."
+        -- do nothing
     end
 
     to connect()
