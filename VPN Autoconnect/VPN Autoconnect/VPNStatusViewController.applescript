@@ -14,31 +14,29 @@ script VPNStatusViewController
 	property parent : class named "NSObject"
 	property view :missing value
     property model : missing value
-    property quitItem : missing value
     
-    on loadView()
+    to loadView()
         set my view to the new of NSMenu
         set my model to the new of VPNService
-        set my quitItem to newQuitItem()
         my view's setDelegate_(me)
     end
     
     on menuNeedsUpdate_(menu)
-        my view's removeAllItems()
+        my view's removeAllItems() -- move to menu closed
         my view's addItem_(newSwitchItem())
-        addConnections into my view
-        my view's addItem_(quitItem)
+        addConnections to my view
+        my view's addItem_(newQuitItem())
     end
     
-    to addConnections into container
-        repeat with vpn in my model's availableVPNs()
+    to addConnections to container
+        repeat with vpn in my model's connections()
             container's addItem_(newConnection from vpn)
         end repeat
     end
 
     on newConnection from vpn
-        set connection to the newItem given title:vpn, action:"connectionSelection:"
-        if model's name equals (vpn as string) then
+        set connection to the newItem given title:vpn, action:"connectionSelected:"
+        if vpn as string equals model's name then
             connection's setState_(true)
         end if
         return connection
@@ -56,40 +54,30 @@ script VPNStatusViewController
         return newItem given title:"Quit", action:"quit:"
     end
 
-    on newItem given title:aTitle, action:aHandler
+    on newItem given title:name, action:callback
         set element to the new of NSMenuItem
-        element's setTitle_(aTitle)
+        element's setTitle_(name)
         element's setTarget_(me)
-        element's setAction_(aHandler)
+        element's setAction_(callback)
         return element
     end
 
     to switch_(sender)
-        if model's autoconnected then
+        if model's name equals "" then
+            display alert "No connection selected."
+        else if model's autoconnected then
             model's disconnect()
         else
-            if model's name equals "" then
-                display alert "No connection selected."
-            else
-                model's connect()
-            end if
+            model's connect()
         end if
     end
 
-    to getLabel given status:connected
-        if connected then
-            return "Turn Off"
+    on connectionSelected_(element)
+        my model's disconnect()
+        if element's state then
+            set model's name to "" as string --prevent connection
         else
-            return "Turn On"
-        end if
-    end
-
-    on connectionSelection_(sender)
-        model's disconnect()
-        if (state of sender as boolean) equals true then
-            model's setName given service:"" --prevent connection
-        else
-            model's setName given service:sender's title
+            set model's name to element's title as string
         end if
     end
 

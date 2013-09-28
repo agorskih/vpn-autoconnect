@@ -10,26 +10,21 @@ script VPNService
 	property parent : class "NSObject"
     property name : "" -- Implement getter to check active VPN connection or use default
     property autoconnected : false
-    
-    -- rewrite
-    to setName given service:vpn
-        set my name to vpn as string
-    end
 
+    on connections()
+        tell application "System Events"
+            tell current location of network preferences
+                return name of every service whose (kind is 10) or (kind is 12) or (kind is 15)
+            end tell
+        end tell
+    end
+    
     on connected()
         tell application "System Events"
             tell current location of network preferences
                 if service my name exists then
                     return connected of current configuration of service my name
                 end if
-            end tell
-        end tell
-    end
-    
-    on availableVPNs()
-        tell application "System Events"
-            tell current location of network preferences
-                return name of every service whose (kind is 10) or (kind is 12) or (kind is 15)
             end tell
         end tell
     end

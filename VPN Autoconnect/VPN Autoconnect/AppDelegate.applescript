@@ -32,12 +32,12 @@ script AppDelegate
     end
 
     on statusBarItem()
-        set statusBar to systemStatusBar of NSStatusBar
+        set statusBar to the systemStatusBar of NSStatusBar
         return statusBar's statusItemWithLength_(-1)'s retain
     end
     
     on applicationName()
-        set bundle to mainBundle of NSBundle
+        set bundle to the mainBundle of NSBundle
         return bundle's infoDictionary's CFBundleName
     end
     
