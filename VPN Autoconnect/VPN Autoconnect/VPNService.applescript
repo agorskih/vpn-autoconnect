@@ -6,6 +6,8 @@
 --  Copyright (c) 2013 Alexander Gorskih. All rights reserved.
 --  MIT-style copyright and disclaimer apply
 
+property NSTimer : class "NSTimer"
+
 script VPNService
 	property parent : class "NSObject"
     property name : "" -- Implement getter to check active VPN connection or use default
@@ -29,8 +31,31 @@ script VPNService
         end tell
     end
     
-    to connect()
+    to enable()
         set my autoconnected to true
+        NSTimer's scheduledTimerWithTimeInterval_target_selector_userInfo_repeats_(1, me, "reconnect:", null, true)
+    end
+
+    to disable()
+        set my autoconnected to false
+    end
+
+    to invalidate()
+        disable()
+        set my name to ""
+    end
+
+    to reconnect_(sender)
+        if autoconnected then
+            tell me to connect()
+        else
+            sender's invalidate()
+            tell me to disconnect()
+        end if
+        tell me to log "Tick"
+    end
+
+    to connect()
         tell application "System Events"
             tell current location of network preferences
                 if service my name exists then
@@ -41,7 +66,6 @@ script VPNService
     end
 
     to disconnect()
-        set my autoconnected to false
         tell application "System Events"
             tell current location of network preferences
                 if service my name exists then

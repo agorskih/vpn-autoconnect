@@ -6,12 +6,12 @@
 --  Copyright (c) 2013 Alexander Gorskih. All rights reserved.
 --  MIT-style copyright and disclaimer apply
 
-property NSMenu : class named "NSMenu"
-property NSMenuItem : class named "NSMenuItem"
-property VPNService : class named "VPNService"
+property NSMenu : class "NSMenu"
+property NSMenuItem : class "NSMenuItem"
+property VPNService : class "VPNService"
 
 script VPNStatusViewController
-	property parent : class named "NSObject"
+	property parent : class "NSObject"
 	property view :missing value
     property model : missing value
     
@@ -22,23 +22,21 @@ script VPNStatusViewController
     end
     
     on menuNeedsUpdate_(menu)
-        my view's removeAllItems() -- move to menu closed
+        my view's removeAllItems()
         my view's addItem_(newSwitchItem())
         addConnections to my view
         my view's addItem_(newQuitItem())
     end
     
     to addConnections to container
-        repeat with vpn in my model's connections()
+        repeat with vpn in VPNService's connections()
             container's addItem_(newConnection from vpn)
         end repeat
     end
 
     on newConnection from vpn
         set connection to the newItem given title:vpn, action:"connectionSelected:"
-        if vpn as string equals model's name then
-            connection's setState_(true)
-        end if
+        connection's setState_(vpn as string equals model's name)
         return connection
     end
 
@@ -65,24 +63,25 @@ script VPNStatusViewController
     to switch_(sender)
         if model's name equals "" then
             display alert "No connection selected."
-        else if model's autoconnected then
-            model's disconnect()
+            return
+        end if
+
+        if model's autoconnected then
+            model's disable()
         else
-            model's connect()
+            model's enable()
         end if
     end
 
     on connectionSelected_(element)
-        my model's disconnect()
-        if element's state then
-            set model's name to "" as string --prevent connection
-        else
+        my model's invalidate()
+        if element's state isn't true then
             set model's name to element's title as string
         end if
     end
 
     to quit_(sender)
-        my model's disconnect()
+        my model's disable()
         tell current application to quit
     end
 
