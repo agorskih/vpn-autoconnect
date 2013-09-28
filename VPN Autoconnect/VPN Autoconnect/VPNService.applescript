@@ -6,12 +6,24 @@
 --  Copyright (c) 2013 Alexander Gorskih. All rights reserved.
 --  MIT-style copyright and disclaimer apply
 
-script VPNConnection
+script VPNService
 	property parent : class "NSObject"
-    property defaultConnection : "" -- Implement getter to check active VPN connection or use default
+    property name : "" -- Implement getter to check active VPN connection or use default
+    property autoconnected : false
     
-    to setDefaultConnection given service:VPNName
-        set defaultConnection to VPNName as string
+    -- rewrite
+    to setName given service:vpn
+        set my name to vpn as string
+    end
+
+    on connected()
+        tell application "System Events"
+            tell current location of network preferences
+                if service my name exists then
+                    return connected of current configuration of service my name
+                end if
+            end tell
+        end tell
     end
     
     on availableVPNs()
@@ -20,5 +32,28 @@ script VPNConnection
                 return name of every service whose (kind is 10) or (kind is 12) or (kind is 15)
             end tell
         end tell
-    end availableVPNs
+    end
+    
+    to connect()
+        set my autoconnected to true
+        tell application "System Events"
+            tell current location of network preferences
+                if service my name exists then
+                    connect service my name
+                end if
+            end tell
+        end tell
+    end
+
+    to disconnect()
+        set my autoconnected to false
+        tell application "System Events"
+            tell current location of network preferences
+                if service my name exists then
+                    disconnect service my name
+                end if
+            end tell
+        end tell
+    end
+
 end script

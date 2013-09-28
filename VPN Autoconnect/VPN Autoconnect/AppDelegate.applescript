@@ -12,31 +12,37 @@ property VPNStatusViewController : class "VPNStatusViewController"
 
 script AppDelegate
 	property parent : class "NSObject"
-    property statusViewController : missing value
+    property menuController : missing value
 	
-	on applicationWillFinishLaunching_(aNotification)
-        createAutoconnectMenuController()
-        addAutoconnectMenuToStatusBar()
-	end applicationWillFinishLaunching_
+	to applicationWillFinishLaunching_(notification)
+        createMenuController()
+        createMenu()
+	end
     
-    on createAutoconnectMenuController()
-        set statusViewController to VPNStatusViewController's new()
-        statusViewController's loadView()
-    end createAutoconnectMenuController
+    to createMenuController()
+        set my menuController to the new of VPNStatusViewController
+        my menuController's loadView()
+    end
     
-    on addAutoconnectMenuToStatusBar()
-        set statusBar to NSStatusBar's systemStatusBar()
-        set autoconnectMenu to statusBar's statusItemWithLength_(-1)'s retain
-        set bundle to NSBundle's mainBundle
-        set title to bundle's infoDictionary's CFBundleName
-        
-        autoconnectMenu's setTitle_(title)
-        autoconnectMenu's setHighlightMode_(true)
-        autoconnectMenu's setMenu_(statusViewController's view)
-    end addAutoconnectMenuToStatusBar
+    to createMenu()
+        set statusItem to my statusBarItem()
+        statusItem's setTitle_(my applicationName())
+        statusItem's setHighlightMode_(true)
+        statusItem's setMenu_(my menuController's view)
+    end
+
+    on statusBarItem()
+        set statusBar to systemStatusBar of NSStatusBar
+        return statusBar's statusItemWithLength_(-1)'s retain
+    end
+    
+    on applicationName()
+        set bundle to mainBundle of NSBundle
+        return bundle's infoDictionary's CFBundleName
+    end
     
 	on applicationShouldTerminate_(sender)
 		return current application's NSTerminateNow
-	end applicationShouldTerminate_
+	end
 	
 end script

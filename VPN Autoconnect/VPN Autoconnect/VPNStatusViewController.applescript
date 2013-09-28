@@ -8,80 +8,93 @@
 
 property NSMenu : class named "NSMenu"
 property NSMenuItem : class named "NSMenuItem"
-property VPNConnection : class named "VPNConnection"
+property VPNService : class named "VPNService"
 
 script VPNStatusViewController
 	property parent : class named "NSObject"
 	property view :missing value
     property model : missing value
-    property turnOnItem : missing value
-    property turnOffItem : missing value
     property quitItem : missing value
     
     on loadView()
         set my view to the new of NSMenu
-        set my model to the new of VPNConnection
-        set my turnOnItem to createTurnOnItem()
-        set my turnOffItem to createTurnOffItem()
-        set my quitItem to createQuitItem()
+        set my model to the new of VPNService
+        set my quitItem to newQuitItem()
         my view's setDelegate_(me)
     end
     
     on menuNeedsUpdate_(menu)
         my view's removeAllItems()
-        my view's addItem_(turnOnItem)
-        my view's addItem_(turnOffItem)
-
-        repeat with vpn in my model's availableVPNs()
-            my view's addItem_(createServiceItem from vpn)
-        end repeat
-        
+        my view's addItem_(newSwitchItem())
+        addConnections into my view
         my view's addItem_(quitItem)
     end
-
-    to createItem given title:aTitle, action:aHandler
-        set viewItem to the new of NSMenuItem
-        viewItem's setTitle_(aTitle)
-        viewItem's setTarget_(me)
-        viewItem's setAction_(aHandler)
-        return viewItem
-    end
     
-    to createServiceItem from vpn
-        set serviceItem to createItem given title:vpn, action:"setVPN:"
-        if serviceItem's title as string equal my model's defaultConnection then
-            serviceItem's setState_(true)
+    to addConnections into container
+        repeat with vpn in my model's availableVPNs()
+            container's addItem_(newConnection from vpn)
+        end repeat
+    end
+
+    on newConnection from vpn
+        set connection to the newItem given title:vpn, action:"connectionSelection:"
+        if model's name equals (vpn as string) then
+            connection's setState_(true)
         end if
-        return serviceItem
+        return connection
     end
 
-    to createTurnOnItem()
-        return createItem given title:"Turn On", action:"turnOn:"
+    on newSwitchItem()
+        if model's autoconnected then
+            return newItem given title:"Turn Off", action:"switch:"
+        else
+            return newItem given title:"Turn On", action:"switch:"
+        end if
     end
 
-    to createTurnOffItem()
-        return createItem given title:"Turn Off", action:"turnOff:"
+    on newQuitItem()
+        return newItem given title:"Quit", action:"quit:"
     end
 
-    to createQuitItem()
-        return createItem given title:"Quit", action:"quit:"
+    on newItem given title:aTitle, action:aHandler
+        set element to the new of NSMenuItem
+        element's setTitle_(aTitle)
+        element's setTarget_(me)
+        element's setAction_(aHandler)
+        return element
     end
 
-    to turnOn_(sender)
-        my turnOnItem's setHidden_(true)
-        my turnOffItem's setHidden_(false)
+    to switch_(sender)
+        if model's autoconnected then
+            model's disconnect()
+        else
+            if model's name equals "" then
+                display alert "No connection selected."
+            else
+                model's connect()
+            end if
+        end if
     end
 
-    to turnOff_(sender)
-        my turnOnItem's setHidden_(false)
-        my turnOffItem's setHidden_(true)
+    to getLabel given status:connected
+        if connected then
+            return "Turn Off"
+        else
+            return "Turn On"
+        end if
     end
 
-    to setVPN_(sender)
-        model's setDefaultConnection given service:sender's title
+    on connectionSelection_(sender)
+        model's disconnect()
+        if (state of sender as boolean) equals true then
+            model's setName given service:"" --prevent connection
+        else
+            model's setName given service:sender's title
+        end if
     end
 
     to quit_(sender)
+        my model's disconnect()
         tell current application to quit
     end
 
