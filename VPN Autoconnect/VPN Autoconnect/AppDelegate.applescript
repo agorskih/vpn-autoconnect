@@ -40,7 +40,7 @@ script AppDelegate
         set bundle to the mainBundle of NSBundle
         return bundle's infoDictionary's CFBundleName
     end
-    
+
 	on applicationShouldTerminate_(sender)
 		return current application's NSTerminateNow
 	end

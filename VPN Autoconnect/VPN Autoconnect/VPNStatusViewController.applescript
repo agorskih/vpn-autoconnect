@@ -36,12 +36,12 @@ script VPNStatusViewController
 
     on newConnection from vpn
         set connection to the newItem given title:vpn, action:"connectionSelected:"
-        connection's setState_(vpn as string equals (model's identifier as string))
+        connection's setState_(vpn as string equals model's identifier as string)
         return connection
     end
 
     on newSwitchItem()
-        if model's autoconnected then
+        if model's autoconnected() then
             return newItem given title:"Turn Off", action:"switch:"
         else
             return newItem given title:"Turn On", action:"switch:"
@@ -57,11 +57,11 @@ script VPNStatusViewController
         element's setTitle_(name)
         element's setTarget_(me)
         element's setAction_(callback)
-        return element
+        return element's autorelease
     end
 
     to switch_(sender)
-        if model's autoconnected then
+        if model's autoconnected() then
             model's disable()
         else
             model's enable()
@@ -69,7 +69,7 @@ script VPNStatusViewController
     end
 
     on connectionSelected_(element)
-        model's disable()
+        my model's disable()
         set my model to VPNService's createNullService()
         if element's state as boolean isn't true then
             set model to VPNService's createService_(element's title)

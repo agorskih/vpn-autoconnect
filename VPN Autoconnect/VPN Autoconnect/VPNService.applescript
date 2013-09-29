@@ -1,6 +1,6 @@
 --
 --  VPNService.applescript
---  VPN service model
+--  VPN service
 --
 --  Created by Alexander Gorskih on 25.09.13.
 --  Copyright (c) 2013 Alexander Gorskih. All rights reserved.
@@ -13,8 +13,9 @@ property FooVPNService : class "VPNService"
 script VPNService
 	property parent : class "NSObject"
     property identifier : missing value
-    property autoconnected : false
     property dialer : null
+
+-- Class methods:
     
     to createNullService()
         return the new of NullVPNService
@@ -26,6 +27,8 @@ script VPNService
         return service
     end
 
+    -- Constants 10, 12, 15 in this method were found by brute-forcing vpn connection types
+    -- May be some values are missing. Tell me if that so.
     on connections()
         tell application "System Events"
             tell current location of network preferences
@@ -34,42 +37,33 @@ script VPNService
         end tell
     end
 
-    on connected()
-        tell application "System Events"
-            tell current location of network preferences
-                if service identifier exists then
-                    return connected of current configuration of service identifier
-                end if
-            end tell
-        end tell
+-- Public methods:
+
+    -- This method can use flag activated in enable/disable method
+    -- But it's better to check dialer's existence
+    -- You could equally use isValid method here
+    on autoconnected()
+        return my dialer isn't null
     end
 
     to enable()
-        disable()
-        set my autoconnected to true
-        set dialer to NSTimer's scheduledTimerWithTimeInterval_target_selector_userInfo_repeats_(1, me, "reconnect:", null, true)
+        tell me to disable()
+        set my dialer to NSTimer's scheduledTimerWithTimeInterval_target_selector_userInfo_repeats_(1, me, "reconnect:", null, true)
     end
 
     to disable()
-        set autoconnected to false
-        if dialer isn't null then
-            dialer's invalidate()
-            set dialer to null
-        end if
-        disconnect()
+        tell me to releaseTimer()
+        tell me to disconnect()
     end
+
+-- Private methods:
+-- Following methods don't validate vpn name
+-- It's better to crash then give user the illusion of safety
 
     to reconnect_(sender)
-        connect()
-        tell me to log "Tick"
-    end
-
-    to connect()
         tell application "System Events"
             tell current location of network preferences
-                if service identifier exists then
-                    connect service identifier
-                end if
+                connect service my identifier
             end tell
         end tell
     end
@@ -77,11 +71,16 @@ script VPNService
     to disconnect()
         tell application "System Events"
             tell current location of network preferences
-                if service identifier exists then
-                    disconnect service identifier
-                end if
+                disconnect service my identifier
             end tell
         end tell
+    end
+
+    to releaseTimer()
+        if autoconnected() then
+            my dialer's invalidate()
+            set my dialer to null
+        end if
     end
 
 end script
